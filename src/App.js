@@ -1,6 +1,9 @@
-import React from 'react';
-import logo from './logo.svg';
-import './App.css';
+import React from "react";
+import logo from "./logo.svg";
+import "./App.css";
+
+// Components
+import Greet from "./components/Greet";
 
 function App() {
   return (
@@ -18,6 +21,8 @@ function App() {
         >
           Learn React
         </a>
+        <Greet firstName="Melissa" lastName="Castillo" />
+        <Greet firstName="Vicente" lastName="Muñoz" />
       </header>
     </div>
   );
