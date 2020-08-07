@@ -9,27 +9,17 @@ import { CardColumns } from "reactstrap";
 import FunctionGreet from "./components/FunctionGreet";
 import ClassGreet from "./components/ClassGreet";
 import Post from "./components/Post";
+import Clock from "./components/Clock";
 
 function App() {
   return (
     <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
+      {/* <header className="App-header">
         <FunctionGreet firstName="Melissa" lastName="Castillo" />
         <ClassGreet firstName="Vicente" lastName="Muñoz" />
         <ClassGreet firstName="David" lastName="Moranchel" />
-      </header>
+      </header> */}
+      <Clock />
 
       {/* 
         Crear un componente funcional que renderice una Card 
@@ -42,7 +32,7 @@ function App() {
         - Utilicen reactstrap para que se vea cute!
       */}
 
-      <CardColumns>
+      {/* <CardColumns>
         <Post
           title="Amazing card"
           subtitle="This is the card!"
@@ -64,7 +54,7 @@ function App() {
           image="https://picsum.photos/id/3/100/100"
           tags={"life,food"}
         />
-      </CardColumns>
+      </CardColumns> */}
     </div>
   );
 }
