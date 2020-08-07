@@ -23,18 +23,19 @@ class SwitchExample extends Component {
   render() {
     const { active } = this.state;
     const color = active ? "primary" : "secondary";
-
     return (
       <>
         <Container>
           <Row>
-            <Col lg={1}>
-              <h1>
-                <Badge color={color}>Holi</Badge>
-              </h1>
-              <Button color="success" onClick={this.handleClickSwitch}>
-                Switch color!
-              </Button>
+            <Col>
+              <div>
+                <h1>
+                  <Badge color={color}>Holi</Badge>
+                </h1>
+                <Button color="success" onClick={this.handleClickSwitch}>
+                  Switch color!
+                </Button>
+              </div>
             </Col>
           </Row>
         </Container>
