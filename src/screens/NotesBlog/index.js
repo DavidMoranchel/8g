@@ -23,10 +23,7 @@ class NotesBlog extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      notes: [
-        { title: "My first note", content: "This is an amazing note!" },
-        { title: "My Second note", content: "This is an amazing note!" },
-      ],
+      notes: [],
       noteTitle: "",
       noteContent: "",
     };
@@ -34,10 +31,22 @@ class NotesBlog extends Component {
     this.handleChangeInput = this.handleChangeInput.bind(this);
   }
 
+  componentDidMount() {
+    let stringNotes = localStorage.getItem("notes");
+    if (stringNotes) {
+      let parsedNotes = JSON.parse(stringNotes);
+      this.setState({
+        notes: parsedNotes,
+      });
+    }
+  }
+
   handleFormSubmit(event) {
     event.preventDefault();
     const { noteTitle, noteContent, notes } = this.state;
     const newNotes = [...notes, { title: noteTitle, content: noteContent }];
+    const stringNewNotes = JSON.stringify(newNotes);
+    localStorage.setItem("notes", stringNewNotes);
     this.setState({
       notes: newNotes,
       noteTitle: "",
@@ -63,7 +72,7 @@ class NotesBlog extends Component {
     return (
       <>
         <Container maxWidth="md">
-          <List dense={false}>{UINotes}</List>
+          <List dense={true}>{UINotes}</List>
         </Container>
         <Container maxWidth="md">
           <Grid
