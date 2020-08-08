@@ -1,10 +1,13 @@
 import React from "react";
 import "./App.css";
 
+// Screens
+import BlogNotes from "./screens/NotesBlog";
+
 function App() {
   return (
     <div className="App">
-      <h1>Hola</h1>
+      <BlogNotes />
     </div>
   );
 }
