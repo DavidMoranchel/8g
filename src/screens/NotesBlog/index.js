@@ -14,10 +14,8 @@ import {
 // CSS
 import "./NotesBlog.css";
 
-// const notes = [
-//   { title: "My first note", content: "This is an amazing note!" },
-//   { title: "My first note", content: "This is an amazing note!" },
-// ];
+// Components
+import CustomTextField from "../../components/CustomTextField";
 
 class NotesBlog extends Component {
   constructor(props) {
@@ -26,9 +24,11 @@ class NotesBlog extends Component {
       notes: [],
       noteTitle: "",
       noteContent: "",
+      test: "",
     };
     this.handleFormSubmit = this.handleFormSubmit.bind(this);
     this.handleChangeInput = this.handleChangeInput.bind(this);
+    this.handleTest = this.handleTest.bind(this);
   }
 
   componentDidMount() {
@@ -51,6 +51,7 @@ class NotesBlog extends Component {
       notes: newNotes,
       noteTitle: "",
       noteContent: "",
+      test: "",
     });
   }
 
@@ -60,8 +61,15 @@ class NotesBlog extends Component {
     });
   }
 
+  handleTest(name, value) {
+    console.log("Handle test", name, value);
+    this.setState({
+      [name]: value,
+    });
+  }
+
   render() {
-    const { noteTitle, noteContent, notes } = this.state;
+    const { noteTitle, noteContent, notes, test } = this.state;
 
     const UINotes = notes.map(({ title, content }, index) => (
       <ListItem key={index} className="List-item">
@@ -88,6 +96,13 @@ class NotesBlog extends Component {
                 justify="center"
                 alignItems="center"
               >
+                <CustomTextField
+                  value={test}
+                  name={"test"}
+                  label={"Test input"}
+                  callback={this.handleTest}
+                />
+
                 <TextField
                   className="input"
                   value={noteTitle}
@@ -117,3 +132,19 @@ class NotesBlog extends Component {
 }
 
 export default NotesBlog;
+// Components
+// import TextInput from "../../components/TextInput";
+// this.test = this.test.bind(this);
+// test(name, value) {
+//   console.log(name, value);
+//   this.setState({
+//     [name]: value,
+//   });
+// }
+/* <TextInput
+  value={test}
+  name={"test"}
+  label={"Test"}
+  callback={this.test}
+  variant="outlined"
+/> */
