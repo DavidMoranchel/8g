@@ -1,8 +1,9 @@
 input {
   color: white;
-  background-color: coral;
+  background-color: #181818;
   border: none;
   border-radius: 5px;
   padding: 5px 10px;
-  outline: none;
+  outline: white;
+  margin: 10px 15px;
 }

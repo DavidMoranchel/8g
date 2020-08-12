@@ -1,0 +1,26 @@
+[
+  {
+    "firstName": "Eduardo",
+    "lastName": "Ramirez",
+    "age": 30,
+    "photoURL": "https://loquesea.com/image.jpg"
+  },
+  {
+    "firstName": "Juan",
+    "lastName": "Cundafé",
+    "age": 29,
+    "photoURL": "https://loquesea.com/image.jpg"
+  },
+  {
+    "firstName": "Naomi",
+    "lastName": "Lopez",
+    "age": 24,
+    "photoURL": "https://loquesea.com/image.jpg"
+  },
+  {
+    "firstName": "Ania",
+    "lastName": "Cuapio",
+    "age": 30,
+    "photoURL": "https://loquesea.com/image.jpg"
+  }
+]

@@ -1,20 +1,9 @@
 import React, { Component } from "react";
 
-// Material UI
-import {
-  Button,
-  Container,
-  Grid,
-  List,
-  ListItem,
-  ListItemText,
-} from "@material-ui/core";
-
 // CSS
 import "./NotesBlog.css";
 
 // Components
-import CustomTextField from "../../components/CustomTextField";
 import Input from "../../components/Input";
 
 class NotesBlog extends Component {
@@ -61,69 +50,41 @@ class NotesBlog extends Component {
   render() {
     const { noteTitle, noteContent, notes } = this.state;
     const UINotes = notes.map(({ title, content }, index) => (
-      <ListItem key={index} className="List-item">
-        <ListItemText primary={title} secondary={content} />
-      </ListItem>
+      <li key={index} className="List-item">
+        <p>
+          {title} {content}
+        </p>
+      </li>
     ));
 
     return (
       <>
-        <Container maxWidth="md">
-          <List dense={true}>{UINotes}</List>
-        </Container>
-        <Container maxWidth="md">
-          <Grid
-            container
-            direction="column"
-            justify="center"
-            alignItems="center"
-          >
-            <form onSubmit={this.handleFormSubmit}>
-              <Grid
-                container
-                direction="column"
-                justify="center"
-                alignItems="center"
-              >
-                <Input
-                  value={noteTitle}
-                  name={"noteTitle"}
-                  label={"Title"}
-                  callback={this.handleChangeInput}
-                />
+        <div className="Container">
+          <ul className="List">{UINotes}</ul>
+        </div>
+        <div className="Container">
+          <form onSubmit={this.handleFormSubmit}>
+            <div className="Container">
+              <Input
+                value={noteTitle}
+                name={"noteTitle"}
+                label={"Title"}
+                callback={this.handleChangeInput}
+              />
 
-                <CustomTextField
-                  value={noteContent}
-                  name={"noteContent"}
-                  label={"Content"}
-                  callback={this.handleChangeInput}
-                />
-                <Button type="submit" variant="contained" color="primary">
-                  Add
-                </Button>
-              </Grid>
-            </form>
-          </Grid>
-        </Container>
+              <Input
+                value={noteContent}
+                name={"noteContent"}
+                label={"Content"}
+                callback={this.handleChangeInput}
+              />
+              <button type="submit">Add</button>
+            </div>
+          </form>
+        </div>
       </>
     );
   }
 }
 
 export default NotesBlog;
-// Components
-// import TextInput from "../../components/TextInput";
-// this.test = this.test.bind(this);
-// test(name, value) {
-//   console.log(name, value);
-//   this.setState({
-//     [name]: value,
-//   });
-// }
-/* <TextInput
-  value={test}
-  name={"test"}
-  label={"Test"}
-  callback={this.test}
-  variant="outlined"
-/> */
