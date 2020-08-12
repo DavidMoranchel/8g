@@ -8,7 +8,6 @@ import {
   List,
   ListItem,
   ListItemText,
-  TextField,
 } from "@material-ui/core";
 
 // CSS
@@ -16,6 +15,7 @@ import "./NotesBlog.css";
 
 // Components
 import CustomTextField from "../../components/CustomTextField";
+import Input from "../../components/Input";
 
 class NotesBlog extends Component {
   constructor(props) {
@@ -24,11 +24,9 @@ class NotesBlog extends Component {
       notes: [],
       noteTitle: "",
       noteContent: "",
-      test: "",
     };
     this.handleFormSubmit = this.handleFormSubmit.bind(this);
     this.handleChangeInput = this.handleChangeInput.bind(this);
-    this.handleTest = this.handleTest.bind(this);
   }
 
   componentDidMount() {
@@ -51,26 +49,17 @@ class NotesBlog extends Component {
       notes: newNotes,
       noteTitle: "",
       noteContent: "",
-      test: "",
     });
   }
 
-  handleChangeInput({ target: { name, value } }) {
-    this.setState({
-      [name]: value,
-    });
-  }
-
-  handleTest(name, value) {
-    console.log("Handle test", name, value);
+  handleChangeInput(name, value) {
     this.setState({
       [name]: value,
     });
   }
 
   render() {
-    const { noteTitle, noteContent, notes, test } = this.state;
-
+    const { noteTitle, noteContent, notes } = this.state;
     const UINotes = notes.map(({ title, content }, index) => (
       <ListItem key={index} className="List-item">
         <ListItemText primary={title} secondary={content} />
@@ -96,28 +85,18 @@ class NotesBlog extends Component {
                 justify="center"
                 alignItems="center"
               >
-                <CustomTextField
-                  value={test}
-                  name={"test"}
-                  label={"Test input"}
-                  callback={this.handleTest}
+                <Input
+                  value={noteTitle}
+                  name={"noteTitle"}
+                  label={"Title"}
+                  callback={this.handleChangeInput}
                 />
 
-                <TextField
-                  className="input"
-                  value={noteTitle}
-                  onChange={this.handleChangeInput}
-                  name="noteTitle"
-                  label="Titulo"
-                  variant="outlined"
-                />
-                <TextField
-                  className="input"
+                <CustomTextField
                   value={noteContent}
-                  onChange={this.handleChangeInput}
-                  name="noteContent"
-                  label="Contenido"
-                  variant="outlined"
+                  name={"noteContent"}
+                  label={"Content"}
+                  callback={this.handleChangeInput}
                 />
                 <Button type="submit" variant="contained" color="primary">
                   Add

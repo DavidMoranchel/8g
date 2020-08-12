@@ -1,0 +1,8 @@
+input {
+  color: white;
+  background-color: coral;
+  border: none;
+  border-radius: 5px;
+  padding: 5px 10px;
+  outline: none;
+}

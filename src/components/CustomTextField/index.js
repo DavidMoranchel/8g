@@ -1,7 +1,12 @@
 import React, { Component } from "react";
 
 // Material UI Components
+// import { withStyles } from "@material-ui/core/styles";
+// import { styled } from "@material-ui/core/styles";
 import TextField from "@material-ui/core/TextField";
+
+// CSS
+import "./CustomTextField.css";
 
 class CustomTextField extends Component {
   constructor(props) {
@@ -10,7 +15,6 @@ class CustomTextField extends Component {
   }
 
   handleChange({ target: { name, value } }) {
-    // console.log(name, value, this.props);
     this.props.callback(name, value);
   }
 
@@ -18,7 +22,7 @@ class CustomTextField extends Component {
     const { value, name, label } = this.props;
     return (
       <TextField
-        className={`input`}
+        className="input"
         variant="outlined"
         value={value}
         name={name}
