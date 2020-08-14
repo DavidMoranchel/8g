@@ -71,29 +71,3 @@ class Users extends Component {
   }
 }
 export default Users;
-
-// POST
-// var user = {
-//   firstName: "Daniel",
-//   lastName: "Heredia",
-//   age: 29,
-// };
-
-// fetch("https://reactsessions-ac545.firebaseio.com/users.json", {
-//   method: "POST",
-//   mode: "cors",
-//   body: JSON.stringify(user)
-// }).then(response => response.json()).then(data => console.log(data));
-
-// PUT
-// var user = {
-//   firstName: "Otra cosa",
-// };
-
-// fetch("https://reactsessions-ac545.firebaseio.com/users/-ME_QL6hj3Fp3KeUWv4S.json", {
-//   method: "PUT",
-//   mode: "cors",
-//   body: JSON.stringify(user)
-// }).then(response => response.json()).then(data => console.log(data));
-
-// PATCH
