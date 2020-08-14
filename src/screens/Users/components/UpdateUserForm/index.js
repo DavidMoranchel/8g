@@ -4,41 +4,27 @@ import React, { Component } from "react";
 import Input from "../../../../components/Input";
 
 // CSS
-import "./UserForm.css";
+// import "./UserForm.css";
 
-class UserForm extends Component {
+class UpdateUserForm extends Component {
   constructor(props) {
     super(props);
-    this.state = {
-      firstName: "",
-      lastName: "",
-      age: 0,
-      // hobbies: [],
-    };
 
     this.handleInputChange = this.handleInputChange.bind(this);
     this.handleSubmit = this.handleSubmit.bind(this);
   }
 
   handleInputChange(name, value) {
-    this.setState({
-      [name]: value,
-    });
+    this.props.inputCallback(name, value);
   }
 
   handleSubmit(event) {
     event.preventDefault();
-    const { firstName, lastName, age } = this.state;
-    this.props.callback(firstName, lastName, age);
-    this.setState({
-      firstName: "",
-      lastName: "",
-      age: 0,
-    });
+    this.props.submitCallback();
   }
 
   render() {
-    const { firstName, lastName, age } = this.state;
+    const { firstName, lastName, age } = this.props.data;
     return (
       <div>
         <form onSubmit={this.handleSubmit}>
@@ -61,11 +47,11 @@ class UserForm extends Component {
             name="age"
             callback={this.handleInputChange}
           />
-          <button type="submit">Crear Usuario</button>
+          <button type="submit">Editar Usuario</button>
         </form>
       </div>
     );
   }
 }
 
-export default UserForm;
+export default UpdateUserForm;
