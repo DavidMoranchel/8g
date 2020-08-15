@@ -8,6 +8,7 @@ import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
 import NotesBlog from "./screens/NotesBlog";
 import CurrencyConverter from "./screens/CurrencyConverter";
 import Users from "./screens/Users";
+import Hooks from "./screens/Hooks";
 
 // Component
 import Menu from "./components/Menu";
@@ -33,6 +34,9 @@ function App() {
           </Route>
           <Route path="/users">
             <Users />
+          </Route>
+          <Route path="/hooks">
+            <Hooks />
           </Route>
         </Switch>
       </div>
