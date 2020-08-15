@@ -1,46 +1,81 @@
-import React, { useState } from "react";
-
-// Component
-import Input from "../../components/Input";
+import React, { useState, useEffect } from "react";
 
 // CSS
 import "./Hooks.css";
 
 function Hooks() {
-  const [greet] = useState("Hola mundo");
-  const [activeButton, setActiveButton] = useState(false);
-  const [inputValue, setInputValue] = useState(0);
+  const [users, setUsers] = useState([]);
 
-  const handleClick = () => setActiveButton(!activeButton);
-  const handleInputTest = (name, value) => setInputValue(value);
-  /*
+  useEffect(() => {
+    fetch("https://reactsessions-ac545.firebaseio.com/users.json")
+      .then((res) => res.json())
+      .then((data) => {
+        console.log(data);
+        let parsedUsers = [];
+        for (let key in data) {
+          let user = data[key];
+          user["key"] = key;
+          parsedUsers.push(user);
+        }
+        if (parsedUsers) {
+          setUsers(parsedUsers);
+        }
+      });
+  }, []);
 
-    1. Hacer que 2 botones incrementen/decrementen el valor de un estado
-    y reflejarlo en la UI
-
-    2. Hacer el CurrencyConverter con hooks
-
-  */
   return (
     <div className="Container">
       <div className="Item">
-        <h1>{greet}</h1>
-      </div>
-      <div className="Item">
-        <button onClick={handleClick}>{activeButton ? "On" : "Off"}</button>
-      </div>
-      <div className="Item">
-        <p>MXN ${inputValue * 21.5}</p>
-        DLS: $
-        <Input
-          type="number"
-          value={inputValue}
-          name="Test"
-          callback={handleInputTest}
-        />
+        <ul>
+          {users.map(({ firstName, lastName, key }) => (
+            <li key={key}>
+              {firstName} {lastName}
+            </li>
+          ))}
+        </ul>
       </div>
     </div>
   );
 }
 
 export default Hooks;
+
+// const [activeButton, setActiveButton] = useState(0);
+// const [counter, setCounter] = useState(0);
+
+// useEffect(() => {
+//   console.log("life cycle perro");
+// });
+
+// useEffect(() => {
+//   console.log("button perro");
+// }, [activeButton]);
+
+// const handleCounter = (action) => {
+//   let newCounter = counter;
+//   if (action === "add") {
+//     newCounter++;
+//   } else {
+//     newCounter--;
+//   }
+//   setCounter(newCounter);
+// };
+
+// return (
+//   <div className="Container">
+//     <div className="Item">
+//       <button
+//         onClick={() => setActiveButton(!activeButton)}
+//         className={`${activeButton ? "activeButton" : null}`}
+//       >
+//         {activeButton ? "Prendido" : "Apagado"}
+//       </button>
+//     </div>
+//     <div className="Item">
+//       <p>{counter}</p>
+//       <button onClick={() => handleCounter("add")}>+</button>
+//       <button onClick={() => handleCounter("subtract")}>-</button>
+//     </div>
+//     <div></div>
+//   </div>
+// );
