@@ -4,39 +4,20 @@ import "./App.css";
 // RRD
 import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
 
-// Screens
-import NotesBlog from "./screens/NotesBlog";
-import CurrencyConverter from "./screens/CurrencyConverter";
 // import Users from "./screens/Users";
-import Hooks from "./screens/Hooks";
-
-// Component
-import Menu from "./components/Menu";
+import UserList from "./screens/UserList";
+import UserDetail from "./screens/UserDetail";
 
 function App() {
   return (
     <Router>
       <div className="App">
         <Switch>
-          <Route exact={true} path="/">
-            <>
-              <Menu currentPath="home" />
-              <h1>Home</h1>
-            </>
+          <Route exact path="/users">
+            <UserList />
           </Route>
-          <Route path="/notesBlog">
-            <Menu currentPath="notesBlog" />
-            <NotesBlog />
-          </Route>
-          <Route path="/currencyConverter">
-            <Menu currentPath="currencyConverter" />
-            <CurrencyConverter />
-          </Route>
-          {/* <Route path="/users">
-            <Users />
-          </Route> */}
-          <Route path="/hooks">
-            <Hooks />
+          <Route exact path="/users/:id">
+            <UserDetail />
           </Route>
         </Switch>
       </div>
